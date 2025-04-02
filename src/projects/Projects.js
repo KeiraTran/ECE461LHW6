@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ProjectItem from "./ProjectItem";
 
-const API_BASE_URL = "http://127.0.0.1:5000"
 
 const Projects = () => {
   // global hardware
@@ -19,7 +18,7 @@ const Projects = () => {
     const project = projects.find((project) => project.id === id);
 
     if (project.joined) {
-      fetch(`${API_BASE_URL}/leave?projectId=${id}`, {
+      fetch(`/leave?projectId=${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +39,7 @@ const Projects = () => {
           alert("An error occurred while leaving the project.");
         });
     } else {
-      fetch(`${API_BASE_URL}/join?projectId=${id}`, {
+      fetch(`/join?projectId=${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +75,7 @@ const Projects = () => {
       return;
     }
   
-    fetch(`${API_BASE_URL}/checkin?projectId=${id}&qty=${qty}`, {
+    fetch(`/checkin?projectId=${id}&qty=${qty}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +125,7 @@ const Projects = () => {
       return;
     }
   
-    fetch(`${API_BASE_URL}/checkout?projectId=${id}&qty=${qty}`, {
+    fetch(`/checkout?projectId=${id}&qty=${qty}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
